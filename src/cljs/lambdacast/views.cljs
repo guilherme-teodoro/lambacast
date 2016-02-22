@@ -1,6 +1,7 @@
 (ns lambdacast.views
   (:require [re-frame.core :refer [subscribe dispatch]]
-            [reagent.core :as reagent]))
+            [reagent.core :as reagent]
+            [material-ui.core :as ui]))
 
 (defn player []
   (let [episode (subscribe [:episode])]
@@ -8,21 +9,28 @@
              :controls true}
      [:source {:type "audio/mpeg"}]]))
 
+
+;; (defn item [_ e]
+;;   [ui/list-item (merge {:key (:title e)
+;;                         :primary-text (:title e)})])
+
+
 (defn home-page []
   (let [podcast (subscribe [:podcast])
         episode (subscribe [:episode])]
-    [:div
-     [:div (:title @episode)]
-     [:div
-      [player]]
-     [:img {:src (:image @podcast) :width 100 :height 100}]
-     [:ul (for [e (:episodes @podcast)]
-            [:li {:key (:title e)
-                  :on-click #(dispatch [:set-episode e])}
-             (:title e)])]]))
+    (fn []
+      [:div
+       [ui/paper (merge {:z-depth 2})
+        [:h1 (:title @podcast)]
+        [player]
+        [:img {:src (:image @podcast) :width 100 :height 100}]
+        [ui/list
+         (for [e (:episodes @podcast)]
+           [ui/list-item (merge {:key (:title e) :primary-text (:title e)})])]]
+      ])))
 
 (defmulti pages identity)
-(defmethod pages :home [] [home-page])
+(defmethod pages :home [] [ui/mui-theme-wrap [home-page]])
 (defmethod pages :default [] [:div])
 
 (defn main-panel []

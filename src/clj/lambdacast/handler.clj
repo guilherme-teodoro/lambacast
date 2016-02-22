@@ -19,7 +19,8 @@
      [:meta {:charset "utf-8"}]
      [:meta {:name "viewport"
              :content "width=device-width, initial-scale=1"}]
-     (include-css (if (env :dev) "css/site.css" "css/site.min.css"))]
+    (include-css (if (env :dev) "css/site.css" "css/site.min.css"))
+    (include-js "https://cdn.rawgit.com/madvas/fractalify/master/resources/public/vendor/vendor.min.js")]
     [:body
      mount-target
      (include-js "js/app.js")]))
