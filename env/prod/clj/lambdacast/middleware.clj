@@ -1,4 +1,4 @@
-(ns lambacast.middleware
+(ns lambdacast.middleware
   (:require [ring.middleware.defaults :refer [site-defaults wrap-defaults]]))
 
 (defn wrap-middleware [handler]

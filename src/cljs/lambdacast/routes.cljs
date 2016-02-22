@@ -1,4 +1,4 @@
-(ns lambacast.routes
+(ns lambdacast.routes
   (:require-macros [secretary.core :refer [defroute]])
   (:import goog.history.Html5History
            goog.Uri)

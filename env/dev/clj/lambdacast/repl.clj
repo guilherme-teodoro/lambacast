@@ -1,5 +1,5 @@
-(ns lambacast.repl
-  (:use lambacast.handler
+(ns lambdacast.repl
+  (:use lambdacast.handler
         ring.server.standalone
         [ring.middleware file-info file]))
 

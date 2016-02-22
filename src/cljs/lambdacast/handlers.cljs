@@ -1,6 +1,6 @@
-(ns lambacast.handlers
+(ns lambdacast.handlers
   (:require [re-frame.core :as r :refer [register-handler dispatch]]
-            [lambacast.db :as db]
+            [lambdacast.db :as db]
             [ajax.core :as ajax]))
 
 (defn keywordize [handler]
@@ -22,7 +22,7 @@
  (fn [db _]
    (ajax/GET "http://localhost:3000/api/"
        {:handler #(dispatch [:got-podcast %])
-        :keywords? true})
+        :error-handler #(print "erro " %)})
    db))
 
 (register-handler

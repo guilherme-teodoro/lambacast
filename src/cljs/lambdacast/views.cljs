@@ -1,7 +1,6 @@
-(ns lambacast.views
+(ns lambdacast.views
   (:require [re-frame.core :refer [subscribe dispatch]]
             [reagent.core :as reagent]))
-
 
 (defn player []
   (let [episode (subscribe [:episode])]
@@ -17,10 +16,10 @@
      [:div
       [player]]
      [:img {:src (:image @podcast) :width 100 :height 100}]
-     (for [e (:episodes @podcast)]
-       [:div {:key (:title e)
-              :on-click #(dispatch [:set-episode e])}
-        (:title e)])]))
+     [:ul (for [e (:episodes @podcast)]
+            [:li {:key (:title e)
+                  :on-click #(dispatch [:set-episode e])}
+             (:title e)])]]))
 
 (defmulti pages identity)
 (defmethod pages :home [] [home-page])

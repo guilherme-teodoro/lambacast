@@ -1,8 +1,8 @@
-(ns lambacast.handler
+(ns lambdacast.handler
   (:require [compojure.core :refer [GET defroutes]]
             [compojure.route :refer [not-found resources]]
             [hiccup.page :refer [include-js include-css html5]]
-            [lambacast.middleware :refer [wrap-middleware]]
+            [lambdacast.middleware :refer [wrap-middleware]]
             [environ.core :refer [env]]
             [clojure.xml :as xml]))
 

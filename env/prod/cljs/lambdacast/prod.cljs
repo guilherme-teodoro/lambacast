@@ -1,5 +1,5 @@
-(ns lambacast.prod
-  (:require [lambacast.core :as core]))
+(ns lambdacast.prod
+  (:require [lambdacast.core :as core]))
 
 ;;ignore println statements in prod
 (set! *print-fn* (fn [& _]))

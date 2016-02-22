@@ -1,13 +1,13 @@
-(ns lambacast.core
+(ns lambdacast.core
   (:require [reagent.core :as reagent :refer [atom]]
             [reagent.session :as session]
             [re-frame.core :as re-frame]
             [secretary.core :as secretary :include-macros true]
             [accountant.core :as accountant]
-            [lambacast.routes :as routes]
-            [lambacast.handlers]
-            [lambacast.subs]
-            [lambacast.views :as views]
+            [lambdacast.routes :as routes]
+            [lambdacast.handlers]
+            [lambdacast.subs]
+            [lambdacast.views :as views]
             [accountant.core :as accountant]))
 
 (accountant/configure-navigation!)

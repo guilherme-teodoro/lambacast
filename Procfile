@@ -1,1 +1,1 @@
-web: java $JVM_OPTS -cp target/lambacast.jar clojure.main -m lambacast.server
+web: java $JVM_OPTS -cp target/lambdacast.jar clojure.main -m lambdacast.server

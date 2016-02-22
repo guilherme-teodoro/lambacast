@@ -1,5 +1,5 @@
-(ns lambacast.server
-  (:require [lambacast.handler :refer [app]]
+(ns lambdacast.server
+  (:require [lambdacast.handler :refer [app]]
             [environ.core :refer [env]]
             [ring.adapter.jetty :refer [run-jetty]])
   (:gen-class))

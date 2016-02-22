@@ -1,4 +1,4 @@
-(defproject lambacast "0.1.0-SNAPSHOT"
+(defproject lambdacast "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
@@ -32,14 +32,14 @@
             [lein-asset-minifier "0.2.7"
              :exclusions [org.clojure/clojure]]]
 
-  :ring {:handler lambacast.handler/app
-         :uberwar-name "lambacast.war"}
+  :ring {:handler lambdacast.handler/app
+         :uberwar-name "lambdacast.war"}
 
   :min-lein-version "2.5.0"
 
-  :uberjar-name "lambacast.jar"
+  :uberjar-name "lambdacast.jar"
 
-  :main lambacast.server
+  :main lambdacast.server
 
   :clean-targets ^{:protect false} [:target-path
                                     [:cljsbuild :builds :app :compiler :output-dir]
@@ -62,7 +62,7 @@
   :sass {:src "src/sass"
          :dst "resources/public/css"}
 
-  :profiles {:dev {:repl-options {:init-ns lambacast.repl}
+  :profiles {:dev {:repl-options {:init-ns lambdacast.repl}
 
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
@@ -105,12 +105,12 @@
                               :nrepl-middleware ["cemerick.piggieback/wrap-cljs-repl"
                                                  ]
                               :css-dirs ["resources/public/css"]
-                              :ring-handler lambacast.handler/app}
+                              :ring-handler lambdacast.handler/app}
 
                    :env {:dev true}
 
                    :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
-                                              :compiler {:main "lambacast.dev"
+                                              :compiler {:main "lambdacast.dev"
                                                          :source-map true}}
 
 

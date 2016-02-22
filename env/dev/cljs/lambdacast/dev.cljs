@@ -1,5 +1,5 @@
-(ns ^:figwheel-no-load lambacast.dev
-  (:require [lambacast.core :as core]
+(ns ^:figwheel-no-load lambdacast.dev
+  (:require [lambdacast.core :as core]
             [figwheel.client :as figwheel :include-macros true]))
 
 (enable-console-print!)

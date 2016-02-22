@@ -1,4 +1,4 @@
-(ns lambacast.util)
+(ns lambdacast.util)
 
 (defn foo-cljc [x]
   "I don't do a whole lot."
