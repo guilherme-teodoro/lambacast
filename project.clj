@@ -19,7 +19,13 @@
                   :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.6"
-                  :exclusions [org.clojure/tools.reader]]]
+                  :exclusions [org.clojure/tools.reader]]
+                 [re-frame "0.5.0"]
+                 [secretary "1.2.3"]
+                 [prismatic/schema "1.0.3"]
+                 [venantius/accountant "0.1.6"
+                  :exclusions [org.clojure/tools.reader]]
+                 [cljs-ajax "0.5.3"]]
 
   :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.1"]

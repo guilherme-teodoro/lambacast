@@ -3,7 +3,8 @@
             [compojure.route :refer [not-found resources]]
             [hiccup.page :refer [include-js include-css html5]]
             [lambacast.middleware :refer [wrap-middleware]]
-            [environ.core :refer [env]]))
+            [environ.core :refer [env]]
+            [clojure.xml :as xml]))
 
 (def mount-target
   [:div#app
@@ -23,11 +24,10 @@
      mount-target
      (include-js "js/app.js")]))
 
-
 (defroutes routes
   (GET "/" [] loading-page)
   (GET "/about" [] loading-page)
-  
+
   (resources "/")
   (not-found "Not Found"))
 
