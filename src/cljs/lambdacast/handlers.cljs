@@ -35,3 +35,19 @@
  :set-episode
  (fn [db [_ episode]]
    (assoc db :episode episode)))
+
+(register-handler
+ :set-player-time
+ (fn [db [_ time total]]
+   (let [percent (/ time total)]
+     (assoc db :player {:time time
+                        :total total
+                        :percent percent
+                        :status (-> db :player :status)}))))
+
+(register-handler
+ :set-player-status
+ (fn [db [_ status]]
+   (let [s (if (= status :playing) :paused :playing)]
+     (assoc-in db [:player :status] s))))
+

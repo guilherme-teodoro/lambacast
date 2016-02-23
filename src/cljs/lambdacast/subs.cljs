@@ -17,3 +17,8 @@
  (fn [db _]
    (reaction (:episode @db))))
 
+(register-sub
+ :player
+ (fn [db _]
+   (reaction (:player @db))))
+

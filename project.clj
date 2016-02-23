@@ -7,7 +7,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [ring-server "0.4.0"]
                  [reagent "0.5.1"
-                  :exclusions [org.clojure/tools.reader]]
+                  :exclusions [cljsjs/react]]
                  [reagent-forms "0.5.16"]
                  [reagent-utils "0.1.7"]
                  [ring "1.4.0"]
@@ -26,7 +26,9 @@
                  [venantius/accountant "0.1.6"
                   :exclusions [org.clojure/tools.reader]]
                  [cljs-ajax "0.5.3"]
-                 [camel-snake-kebab "0.3.2"]]
+                 [camel-snake-kebab "0.3.2"]
+                 [domina "1.0.3"]
+                 [cljsjs/moment "2.10.6-2"]]
 
   :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.1"]

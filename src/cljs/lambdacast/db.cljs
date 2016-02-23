@@ -2,4 +2,9 @@
 
 (def default-db
   {:active-route :home
-   :podcast {}})
+   :podcast {}
+   :episode {}
+   :player {:status :paused
+            :time 0
+            :total 0
+            :percent 0}})
