@@ -21,4 +21,3 @@
  :player
  (fn [db _]
    (reaction (:player @db))))
-
