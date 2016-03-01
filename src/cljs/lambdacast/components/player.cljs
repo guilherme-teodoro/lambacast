@@ -28,7 +28,8 @@
 (defn player-actions [p]
   (let [s (:status @p)]
     [:div.player-actions
-     {:on-click (fn []
+     {:style {:cursor "pointer"}
+      :on-click (fn []
                   (let [el (gdom/getElement "player")]
                     (dispatch [:set-player-status s])
                     (if (= s :playing) (.pause el) (.play el))))}
@@ -42,6 +43,7 @@
      (let [el (gdom/getElement "player")
            time (.-currentTime el)
            total (.-duration el)]
+       (print (.-duration el))
        (dispatch [:set-player-time time total])))))
 
 (defn player []
@@ -50,13 +52,16 @@
     handle-time-ev
     :reagent-render
     (fn []
-      (let [episode (subscribe [:episode])
-            p (subscribe [:player])]
+      (let [epi (subscribe [:episode])
+            pl (subscribe [:player])]
+        (print (:total @pl))
         [:div.player
          [ui/paper {:style {:height 70}}
-          [player-slider p]
+          [player-slider pl]
           [:div.player-content
-           [:div (utils/fmt-seconds (:time @p))]
-           [player-actions p]
-           [:div (utils/fmt-seconds (:total @p))]]
-          [player-audio episode]]]))}))
+           [:div {:style {:flex 1 :text-align "left"}} (:title @epi)]
+           [player-actions pl]
+           [:div {:style {:flex 1 :text-align "right"}} (str (utils/fmt-seconds (:time @pl))
+                      "/"
+                      (utils/fmt-seconds (:total @pl)))]]
+          [player-audio epi]]]))}))
