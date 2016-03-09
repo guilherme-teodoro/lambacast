@@ -20,7 +20,7 @@
 (defn player-audio [episode]
   [:audio {:id "player"
            :style {:position "relative" :top "-30px"}
-           :src (-> @episode :enclosure :url)
+           :src (-> @episode :link)
            :controls false
            :autoplay true}
    [:source {:type "audio/mpeg"}]])
@@ -54,7 +54,6 @@
     (fn []
       (let [epi (subscribe [:episode])
             pl (subscribe [:player])]
-        (print (:total @pl))
         [:div.player
          [ui/paper {:style {:height 70}}
           [player-slider pl]

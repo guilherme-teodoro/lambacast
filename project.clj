@@ -28,7 +28,10 @@
                  [cljs-ajax "0.5.3"]
                  [camel-snake-kebab "0.3.2"]
                  [domina "1.0.3"]
-                 [cljsjs/moment "2.10.6-2"]]
+                 [cljsjs/moment "2.10.6-2"]
+                 [com.cognitect/transit-clj "0.8.281"]
+                 [com.cognitect/transit-cljs "0.8.237"]
+                 [feedparser-clj "0.2"]]
 
   :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.1"]
@@ -64,6 +67,9 @@
 
   :sass {:src "src/sass"
          :dst "resources/public/css"}
+
+  :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]
+                 :init-ns user}
 
   :profiles {:dev {:repl-options {:init-ns lambdacast.repl}
 

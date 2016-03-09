@@ -31,7 +31,8 @@
   (let [podcast (subscribe [:podcast])
         episode (subscribe [:episode])]
     (fn []
+      (print @podcast)
       [:div
-       [cover (:image @podcast)]
+       [cover (-> @podcast :image :url)]
        [podcast-content @podcast
-        [episodes-list (:episodes @podcast)]]])))
+        [episodes-list (:entries @podcast)]]])))

@@ -1,7 +1,8 @@
 (ns lambdacast.handlers
   (:require [re-frame.core :as r :refer [register-handler dispatch]]
             [lambdacast.db :as db]
-            [ajax.core :as ajax]))
+            [ajax.core :as ajax]
+            [cognitect.transit :as t]))
 
 (defn keywordize [handler]
   (fn imposter-handler [db [v data]]
@@ -20,8 +21,10 @@
 (register-handler
  :get-podcast
  (fn [db _]
-   (ajax/GET "http://localhost:3000/api/"
+   (ajax/GET "http://localhost:3449/api"
        {:handler #(dispatch [:got-podcast %])
+        :headers {:Accept ["application/transit+json"]}
+        :format :transit
         :error-handler #(print "erro " %)})
    db))
 
@@ -29,7 +32,7 @@
  :got-podcast
  keywordize
  (fn [db [_ data]]
-   (assoc db :podcast data)))
+   (assoc db :podcast (t/read (t/reader :json) data))))
 
 (register-handler
  :set-episode
