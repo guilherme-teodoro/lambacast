@@ -21,5 +21,7 @@
   (defroute "/" []
     (re-frame/dispatch [:set-active-route :home])
     (re-frame/dispatch [:get-podcast]))
+  (defroute "/login" []
+    (re-frame/dispatch [:set-active-route :login]))
   (hook-browser-navigation!))
 

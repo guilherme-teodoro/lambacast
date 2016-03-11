@@ -1,7 +1,7 @@
 (ns lambdacast.db)
 
 (def default-db
-  {:active-route :home
+  {:active-route ""
    :podcast {}
    :episode {}
    :player {:status :paused

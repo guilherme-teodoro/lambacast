@@ -5,8 +5,8 @@
             [lambdacast.middleware :refer [wrap-middleware]]
             [environ.core :refer [env]]
             [clojure.xml :as xml]
-            [cognitect.transit :as t])
-  (:import [java.io ByteArrayInputStream ByteArrayOutputStream])
+            [liberator.core :refer [defresource]]
+            [lambdacast.db :as db])
   (:use [feedparser-clj.core]))
 
 (def mount-target
@@ -29,32 +29,20 @@
      mount-target
      (include-js "js/app.js")]))
 
-(defn read-transit [is]
-  (t/read (t/reader is :json)))
-
-(defn read-transit-str [^String s]
-  (read-transit (ByteArrayInputStream. (.getBytes s "UTF-8"))))
-
-(defn write-transit [o os]
-  (t/write (t/writer os :json) o))
-
-(defn write-transit-bytes ^bytes [o]
-  (let [os (ByteArrayOutputStream.)]
-    (write-transit o os)
-    (.toByteArray os)))
-
-(defn write-transit-str [o]
-  (String. (write-transit-bytes o) "UTF-8"))
-
-(def response
+(defn response []
   (-> "http://feeds.feedburner.com/rapaduracast"
       parse-feed
-      write-transit-str))
+      db/add-podcast))
+
+(defresource get-podcasts
+  :available-media-types ["text/plain"]
+  :handle-ok (db/get-podcasts))
 
 (defroutes routes
   (GET "/" [] loading-page)
   (GET "/about" [] loading-page)
-  (GET "/api" [] response)
+  (GET "/login" [] loading-page)
+  (GET "/api/podcasts" [] (get-podcasts))
 
   (resources "/")
   (not-found "Not Found"))

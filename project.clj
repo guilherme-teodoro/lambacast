@@ -31,7 +31,9 @@
                  [cljsjs/moment "2.10.6-2"]
                  [com.cognitect/transit-clj "0.8.281"]
                  [com.cognitect/transit-cljs "0.8.237"]
-                 [feedparser-clj "0.2"]]
+                 [feedparser-clj "0.2"]
+                 [liberator "0.13"]
+                 [com.novemberain/monger "3.0.2"]]
 
   :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.1"]
