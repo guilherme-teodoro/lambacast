@@ -1,5 +1,6 @@
 (ns lambdacast.components.podcast-page
   (:require [re-frame.core :refer [subscribe dispatch]]
+            [lambdacast.components.main :as v]
             [reagent.core :as reagent]
             [material-ui.core :as ui]
             [domina.css :as dom]
@@ -31,8 +32,7 @@
   (let [podcast (subscribe [:podcast])
         episode (subscribe [:episode])]
     (fn []
-      (print @podcast)
-      [:div
+      [v/main-view
        [cover (-> @podcast :image :url)]
        [podcast-content @podcast
         [episodes-list (:entries @podcast)]]])))

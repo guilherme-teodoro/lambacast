@@ -19,11 +19,14 @@
 (def loading-page
   (html5
    [:head
-     [:meta {:charset "utf-8"}]
-     [:meta {:name "viewport"
+    [:meta {:charset "utf-8"}]
+    [:meta {:name "google-signin-client_id" :content "468166379834-mcklql8qtnngno5dgfbo0q6g0p65n2jo.apps.googleusercontent.com"}]
+    [:meta {:name "google-signin-scope" :content "profile"}]
+    [:meta {:name "viewport"
              :content "width=device-width, initial-scale=1"}]
     (include-css (if (env :dev) "css/profile.css" "css/profile.min.css"))
     (include-css "https://fonts.googleapis.com/icon?family=Material+Icons")
+    (include-js "https://cdnjs.cloudflare.com/ajax/libs/hellojs/1.12.0/hello.all.min.js")
     (include-js "https://cdn.rawgit.com/madvas/fractalify/master/resources/public/vendor/vendor.min.js")]
     [:body
      mount-target
