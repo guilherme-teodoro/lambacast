@@ -5,6 +5,7 @@
             [lambdacast.middleware :refer [wrap-middleware]]
             [environ.core :refer [env]]
             [lambdacast.resources :as rc]))
+
 (def mount-target
   [:div#app
       [:h3 "ClojureScript has not been compiled!"]
@@ -32,7 +33,7 @@
   (GET "/" [] loading-page)
   (GET "/about" [] loading-page)
   (GET "/login" [] loading-page)
-  (ANY "/api/podcasts" [] rc/podcasts)
+  (ANY "/api/podcasts" [] rc/list-podcasts)
 
   (resources "/")
   (not-found "Not Found"))

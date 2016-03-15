@@ -34,7 +34,8 @@
                  [feedparser-clj "0.2"]
                  [liberator "0.13"]
                  [com.novemberain/monger "3.0.2"]
-                 [org.clojure/tools.logging "0.3.1"]]
+                 [org.clojure/tools.logging "0.3.1"]
+                 [clj-jwt "0.1.1"]]
 
   :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.1"]
