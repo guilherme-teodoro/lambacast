@@ -7,11 +7,10 @@
 (defn init-hello []
   (.init js/hello
          (clj->js {:google "789493891711-6t3r4c55i07o3rks8si9ldhfld5m8fp8"})
-         {"redirect_uri" "/login"
-          "scope" "email"}))
+         {"redirect_uri" "/login" :scope "email"}))
 
 (defn cb-profile [profile]
-  ;; (print (.getAuthResponse js/hello "google"))
+  (print (.getAuthResponse js/hello "google"))
   (print (js->clj profile :keywordize-keys true)))
 
 (defn get-profile []

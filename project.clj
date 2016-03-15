@@ -33,7 +33,8 @@
                  [com.cognitect/transit-cljs "0.8.237"]
                  [feedparser-clj "0.2"]
                  [liberator "0.13"]
-                 [com.novemberain/monger "3.0.2"]]
+                 [com.novemberain/monger "3.0.2"]
+                 [org.clojure/tools.logging "0.3.1"]]
 
   :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.1"]
@@ -104,7 +105,6 @@
                                            org.clojure/clojurescript
                                            org.clojure/core.async
                                            org.clojure/tools.analyzer.jvm]]
-                             
                              [lein-sassy "1.0.7"]]
 
                    :injections [(require 'pjstadig.humane-test-output)
